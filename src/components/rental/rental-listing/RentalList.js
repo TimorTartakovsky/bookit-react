@@ -7,16 +7,17 @@ class RentalList extends React.Component {
     
     componentWillMount() {
         const initRentalAction = actionCreators.initRentals();
-        this.props.dispatch({...initRentalAction});
+        this.props.dispatch(initRentalAction);
     }
 
     generateRentals() {
-        return this.props.rentals.data.map((r) => 
+        const rentals = this.props.rentals && this.props.rentals.data ? this.props.rentals.data.map((r) => 
             <RentalCard 
-                key={r.id}
+                key={r._id}
                 rental={r}
             />
-        );
+        ) : null;
+        return rentals;
     }
 
     render() {

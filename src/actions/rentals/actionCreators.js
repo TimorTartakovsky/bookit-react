@@ -1,31 +1,29 @@
 import * as actions from './actions';
-import * as data from '../../schemas/data.json';
+import axios from 'axios';
+import * as urlParams from '../../consts/request-const';
 
 export const initRentals = (payload) => {
-    const action = new actions.InitRentals(payload || {
-        rentals: data.rentals,
-    });
-    return action;
+    return function(dispatch) {
+        const url = `${urlParams.API_VERSION}${urlParams.RENTALS_URL}`;
+        axios.get(url).then((rental) => {
+            const action = new actions.InitRentals(payload || {
+                rentals: rental.data,
+            });
+            dispatch({...action})
+        });
+    }
 }
 
 export const fetchRentalById = (id) => {
-    if (!Number.isInteger(id)) {
-        try {
-            const parsedId = Number.parseInt(id);
-            const action = new actions.FetchRentalById({ id: parsedId });
-            return action;
-        } catch (e) {
-            console.error(`fetchRentalById received NaN data in arguments.`);
-        }
-    }
     const action = new actions.FetchRentalById({ id });
     return action;
 }
 
 export const fetchRentalByIdAsync = (id) => {
     return function(dispatch) {
-        setTimeout(() => {
-            dispatch({...fetchRentalById(id)});
-        }, 2000);
+        const url = `${urlParams.API_VERSION}${urlParams.RENTALS_URL}/${id}`;
+        axios.get(url).then((rental) => {
+            dispatch({...fetchRentalById(rental.data._id)});
+        });
     }
 }

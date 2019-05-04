@@ -6,8 +6,8 @@ class RentalDetail extends React.Component {
 
     componentWillMount() {
         const { id } = this.props.match.params;
-        const fetchSelectedRental = actionCreators.fetchRentalById(id);
-        this.props.dispatch({...fetchSelectedRental});
+        const fetchSelectedRental = actionCreators.fetchRentalByIdAsync(id);
+        this.props.dispatch(fetchSelectedRental);
     }
 
     render() {

@@ -5,7 +5,7 @@ export const RentalCard = (props) => {
     const { rental } = props;
     return (
         <div className='col-md-3 col-xs-6'>
-            <Link className='rental-detail-link' to={`/rental/${rental.id}`}>
+            <Link className='rental-detail-link' to={`/rental/${rental._id}`}>
                 <div className='card rental-card'>
                     <img className='card-img-top' src={rental.image || 'http://via.placeholder.com/350x250'} alt=''></img>
                     <div className='card-block'>
