@@ -1,18 +1,18 @@
 import React from 'react';
 import { RentalCard } from './RentalCard';
-import * as data from '../../schemas/data.json';
+import { connect } from 'react-redux';
+import * as actionCreators from '../../actions/rentals/actionCreators';
 
-export class RentalList extends React.Component {
+class RentalList extends React.Component {
     
-    constructor() {
-        super();
-        this.state = {
-            rentals: data.rentals,
-        }
+    componentWillMount() {
+        const initRentalAction = actionCreators.initRentals();
+        this.props.dispatch({...initRentalAction});
     }
-    
+
     generateRentals() {
-        return this.state.rentals.map((r) => 
+        debugger;
+        return this.props.rentals.data.map((r) => 
             <RentalCard 
                 key={r.id}
                 rental={r}
@@ -31,3 +31,11 @@ export class RentalList extends React.Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        rentals: state.rentals,
+    }
+}
+
+export default connect(mapStateToProps)(RentalList)
