@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { Header } from './shared/Header';
 import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 import RentalList from './components/rental/RentalList';
-import { RentalDetail } from './components/rental/RentalDetail';
+import RentalDetail from './components/rental/RentalDetail';
 
 const store  = require('./reducers').initApplicationStore();
 

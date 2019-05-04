@@ -11,7 +11,6 @@ class RentalList extends React.Component {
     }
 
     generateRentals() {
-        debugger;
         return this.props.rentals.data.map((r) => 
             <RentalCard 
                 key={r.id}
