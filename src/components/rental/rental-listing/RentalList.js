@@ -1,7 +1,7 @@
 import React from 'react';
 import { RentalCard } from './RentalCard';
 import { connect } from 'react-redux';
-import * as actionCreators from '../../actions/rentals/actionCreators';
+import * as actionCreators from '../../../actions/rentals/actionCreators';
 
 class RentalList extends React.Component {
     

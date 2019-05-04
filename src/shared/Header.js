@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
     return (
         <nav className='navbar navbar-dark navbar-expand-lg'>
             <div className='container'>
-                <a className='navbar-brand' href=''>Book It Now</a>
+                <Link className='navbar-brand' to='/rentals'>Book It Now</Link>
                 <form className='form-inline my-2 my-lg-0'>
                     <input className='form-control mr-sm-2 header-search' type='search' placeholder='Try "New York"' aria-label='Search'></input>
                     <button className='btn btn-outline-success my-2 my-sm-0 btn-header-search' type='submit'>Search</button>
@@ -14,8 +15,8 @@ export const Header = () => {
                 </button>
                 <div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
                     <div className='navbar-nav ml-auto'>
-                        <a className='nav-item nav-link active' href=''>Login <span className='sr-only'>(current)</span></a>
-                        <a className='nav-item nav-link' href=''>Register</a>
+                        <Link className='nav-item nav-link active' to='/login'>Login <span className='sr-only'>(current)</span></Link>
+                        <Link className='nav-item nav-link' to='/register'>Register</Link>
                     </div>
                 </div>
             </div>

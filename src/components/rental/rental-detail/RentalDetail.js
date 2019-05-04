@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as actionCreators from '../../actions/rentals/actionCreators';
+import * as actionCreators from '../../../actions/rentals/actionCreators';
 
 class RentalDetail extends React.Component {
 

@@ -21,3 +21,11 @@ export const fetchRentalById = (id) => {
     const action = new actions.FetchRentalById({ id });
     return action;
 }
+
+export const fetchRentalByIdAsync = (id) => {
+    return function(dispatch) {
+        setTimeout(() => {
+            dispatch({...fetchRentalById(id)});
+        }, 2000);
+    }
+}
