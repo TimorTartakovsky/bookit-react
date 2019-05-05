@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { rentalType, doUpperCase } from '../../../helpers/';
 
 export const RentalCard = (props) => {
     const { rental } = props;
@@ -9,7 +10,7 @@ export const RentalCard = (props) => {
                 <div className='card rental-card'>
                     <img className='card-img-top' src={rental.image || 'http://via.placeholder.com/350x250'} alt=''></img>
                     <div className='card-block'>
-                        <h6 className={`card-subtitle ${rental.category}`}>{rental.shared ? 'Shared Apartment' : 'Whole Apartment'} &#183; {rental.city}</h6>
+                        <h6 className={`card-subtitle ${rental.category}`}>{rentalType(rental.shared)} &#183; {doUpperCase(rental.city)}</h6>
                         <h4 className='card-title'>{rental.title}</h4>
                         <p className='card-text'>{rental.dailyRate} &#183; Free Cancelation</p>
                     </div>
