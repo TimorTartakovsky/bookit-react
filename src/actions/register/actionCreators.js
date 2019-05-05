@@ -1,12 +1,13 @@
 import * as actions from './actions';
-import axios from 'axios';
 import * as urlParams from '../../consts/request-const';
-import authService from '../../services/auth-service';
+import axiosService from '../../services/axios-service';
+
+const axiosInstance = axiosService.getInstance();
 
 export const registerUser = (payload) => {
     return function(dispatch) {
-        const url = `${urlParams.API_VERSION}${urlParams.USERS_ROUTE}${urlParams.REGISTER_USER_URL}`;
-        axios.post(url, { ...payload }).then(
+        const url = `${urlParams.USERS_ROUTE}${urlParams.REGISTER_USER_URL}`;
+        axiosInstance.post(url, { ...payload }).then(
             (registeredUser) => {
                 const action = new actions.RegisterUser({
                     user: registeredUser.data,
@@ -38,8 +39,8 @@ export const registerUser = (payload) => {
 
 export const loginUser = (payload) => {
     return function(dispatch) {
-        const url = `${urlParams.API_VERSION}${urlParams.USERS_ROUTE}${urlParams.AUTH_USER_URL}`;
-        axios.post(url, { ...payload }).then(
+        const url = `${urlParams.USERS_ROUTE}${urlParams.AUTH_USER_URL}`;
+        axiosInstance.post(url, { ...payload }).then(
             (loginUser) => {
                 const { token } = loginUser.data;
                 localStorage.setItem(urlParams.authTokenStorageKey, token);
@@ -49,6 +50,7 @@ export const loginUser = (payload) => {
                 dispatch({...action})
             },
             (error) => {
+                debugger;
                 const action = new actions.LoginUserError({
                     error: error.response && error.response.data,
                 });
