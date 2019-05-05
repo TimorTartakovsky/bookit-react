@@ -6,3 +6,6 @@ export const RENTALS_ROUTE = '/rentals';
 export const USERS_ROUTE = '/users'
 export const REGISTER_USER_URL = '/register';
 export const AUTH_USER_URL = '/auth';
+
+
+export const authTokenStorageKey = 'auth_token';
