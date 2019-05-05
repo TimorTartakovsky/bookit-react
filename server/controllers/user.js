@@ -37,6 +37,7 @@ exports.auth = function(req, res) {
             const token = jwt.sign({
                 userId: user._id,
                 username: user.username,
+                email: user.email,
             }, config.secret, { expiresIn: 60 * 60 });
             return res.json({ token })
          }
@@ -108,7 +109,10 @@ exports.register = function(req, res) {
                     }]
                 });
             }
-            res.json({'registered': true})
+            res.json({
+                username: user.username,
+                email: user.email,
+            });
         });
     });
 }

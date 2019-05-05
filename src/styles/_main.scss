@@ -1,5 +1,6 @@
 @import './variables';
 @import './header/header';
+@import './form/form';
 @import './rental/rentalListing';
 @import './rental/rentalDetail';
 
@@ -18,4 +19,16 @@
 
 .condo {
     color: #d68000;
+}
+
+.app-btn {
+   background-color: $main-color; 
+   border-color:  $main-color;
+   color: #fff;
+   padding: 15px 30px;
+   font-size: 20px;
+   &:hover, &:focus, &:active {
+    background-color: $main-color !important; 
+    border-color:  $main-color !important;
+   }
 }

@@ -5,6 +5,8 @@ import { Header } from './shared/Header';
 import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 import RentalList from './components/rental/rental-listing/RentalList';
 import RentalDetail from './components/rental/rental-detail/RentalDetail';
+import { Login } from './components/login/login'; 
+import Register from './components/register/register';
 
 const store  = require('./reducers').initApplicationStore();
 
@@ -16,6 +18,8 @@ function App() {
           <Header />
           <div className='container'>
             <Route exact path="/" component={() => <Redirect to='/rentals' />} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/register"component={Register} />
             <Route exact path="/rentals" component={RentalList} />
             <Route exact path="/rental/:id" component={RentalDetail} />
           </div>

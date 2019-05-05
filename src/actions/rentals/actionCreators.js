@@ -4,7 +4,7 @@ import * as urlParams from '../../consts/request-const';
 
 export const initRentals = (payload) => {
     return function(dispatch) {
-        const url = `${urlParams.API_VERSION}${urlParams.RENTALS_URL}`;
+        const url = `${urlParams.API_VERSION}${urlParams.RENTALS_ROUTE}`;
         axios.get(url).then((rental) => {
             const action = new actions.InitRentals(payload || {
                 rentals: rental.data,
@@ -21,7 +21,7 @@ export const fetchRentalById = (id) => {
 
 export const fetchRentalByIdAsync = (id) => {
     return function(dispatch) {
-        const url = `${urlParams.API_VERSION}${urlParams.RENTALS_URL}/${id}`;
+        const url = `${urlParams.API_VERSION}${urlParams.RENTALS_ROUTE}/${id}`;
         axios.get(url).then((rental) => {
             dispatch({...fetchRentalById(rental.data._id)});
         });
